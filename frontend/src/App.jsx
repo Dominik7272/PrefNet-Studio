@@ -92,6 +92,7 @@ export default function App() {
   const [predictViewMode, setPredictViewMode] = useState('dynamic'); // 'square' | 'dynamic' | 'list'
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [latestVersion, setLatestVersion] = useState('');
+  const [updating, setUpdating] = useState(false);
   const [selectedLayerIdx, setSelectedLayerIdx] = useState(null);
   const [dragOverLayerIdx, setDragOverLayerIdx] = useState(null);
   const [dragOverInsertIdx, setDragOverInsertIdx] = useState(null);
@@ -295,6 +296,24 @@ export default function App() {
       }
     } catch (e) {
       console.error("Error checking updates", e);
+    }
+  };
+
+  const handleUpdate = async () => {
+    setUpdating(true);
+    try {
+      const res = await fetch(`${API_BASE}/api/system/update`, { method: 'POST' });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        showCustomAlert("Successfully pulled the latest release from GitHub! Please restart the server to apply any backend changes.", "Success");
+        setUpdateAvailable(false);
+      } else {
+        showCustomAlert(data.error || "Failed to update.", "Update Failed");
+      }
+    } catch (e) {
+      showCustomAlert(e.message || "Network error while updating.", "Update Failed");
+    } finally {
+      setUpdating(false);
     }
   };
 
@@ -1363,11 +1382,13 @@ export default function App() {
                 gap: 6,
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                borderRadius: '6px'
+                borderRadius: '6px',
+                opacity: updating ? 0.7 : 1
               }}
-              onClick={() => window.open("https://github.com/Dominik7272/PrefNet-Studio", "_blank")}
+              disabled={updating}
+              onClick={handleUpdate}
             >
-              <Download size={12} /> Update Available ({latestVersion})
+              <Download size={12} /> {updating ? "Updating..." : `Update Available (${latestVersion})`}
             </button>
           )}
           <span className="flex align-center gap-6" style={{ color: 'var(--primary)' }}><Cpu size={14} /> device: {workspace.device.toUpperCase()}</span>

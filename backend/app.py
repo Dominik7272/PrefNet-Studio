@@ -1561,7 +1561,7 @@ def api_batch_status():
 
 
 # System Update Check API
-CURRENT_VERSION = "1.0.0"
+CURRENT_VERSION = "0.0.0"
 
 @app.route('/api/system/update-check', methods=['GET'])
 def api_update_check():
@@ -1606,6 +1606,36 @@ def api_update_check():
             "current_version": CURRENT_VERSION,
             "latest_version": CURRENT_VERSION,
             "update_available": False,
+            "error": str(e)
+        })
+
+
+@app.route('/api/system/update', methods=['POST'])
+def api_system_update():
+    import subprocess
+    try:
+        # Run git pull from the parent directory of this script (repository root)
+        repo_dir = os.path.dirname(SCRIPT_DIR)
+        result = subprocess.run(
+            ["git", "pull"],
+            cwd=repo_dir,
+            capture_output=True,
+            text=True,
+            timeout=30
+        )
+        if result.returncode == 0:
+            return jsonify({
+                "success": True,
+                "output": result.stdout
+            })
+        else:
+            return jsonify({
+                "success": False,
+                "error": result.stderr or result.stdout or "Unknown git error"
+            })
+    except Exception as e:
+        return jsonify({
+            "success": False,
             "error": str(e)
         })
 
