@@ -1,0 +1,20 @@
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Dependencies
+**/node_modules/
+
+# Production Build (Optional: remove if you want to build locally)
+# classifier_v3/frontend/dist
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Agent CLI metadata
+.antigravitycli/
