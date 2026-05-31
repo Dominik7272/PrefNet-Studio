@@ -1366,7 +1366,7 @@ export default function App() {
                 cursor: 'pointer',
                 borderRadius: '6px'
               }}
-              onClick={() => window.open("https://github.com/Dominik7272/PrefNet", "_blank")}
+              onClick={() => window.open("https://github.com/Dominik7272/PrefNet-Studio", "_blank")}
             >
               <Download size={12} /> Update Available ({latestVersion})
             </button>

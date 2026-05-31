@@ -1567,7 +1567,7 @@ CURRENT_VERSION = "1.0.0"
 def api_update_check():
     import urllib.request
     import json
-    url = "https://api.github.com/repos/Dominik7272/PrefNet/releases/latest"
+    url = "https://api.github.com/repos/Dominik7272/PrefNet-Studio/releases/latest"
     req = urllib.request.Request(
         url,
         headers={'User-Agent': 'PrefNet-App-Update-Checker'}
