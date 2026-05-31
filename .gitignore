@@ -6,6 +6,9 @@ __pycache__/
 
 # Dependencies
 **/node_modules/
+.venv/
+venv/
+ENV/
 
 # Production Build (Optional: remove if you want to build locally)
 # classifier_v3/frontend/dist
