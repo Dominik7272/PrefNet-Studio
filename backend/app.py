@@ -1625,7 +1625,7 @@ def serve(path):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--port", type=int, default=8000, help="Port to run Flask backend")
+    parser.add_argument("--port", type=int, default=8100, help="Port to run Flask backend")
     args = parser.parse_args()
     
     print("--------------------------------------------------")

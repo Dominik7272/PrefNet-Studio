@@ -8,7 +8,7 @@ import {
   Hash, Percent, Zap
 } from 'lucide-react';
 
-const API_BASE = window.location.origin.includes('5173') ? 'http://localhost:8000' : '';
+const API_BASE = window.location.origin.includes('5173') ? 'http://localhost:8100' : '';
 
 const DEFAULT_NN_PRESETS = [
   {
