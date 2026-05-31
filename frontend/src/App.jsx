@@ -1324,7 +1324,7 @@ export default function App() {
       <header className="top-header">
         <div className="logo-section">
           <div className="logo-icon-svg"><Layers size={18} /></div>
-          <span className="logo-text-title">Tagger Studio <span className="logo-tag">CLIP & NN</span></span>
+          <span className="logo-text-title">PrefNet Studio <span className="logo-tag">CLIP & NN</span></span>
         </div>
 
         {/* 6 Tab Capsule */}
