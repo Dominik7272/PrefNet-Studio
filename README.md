@@ -32,7 +32,7 @@ If you prefer not to use the batch file, you can set it up manually:
 
 ### 3. Open the Interface
 Navigate your browser to:
-👉 **[http://localhost:8100](http://localhost:8100)**
+**[http://localhost:8100](http://localhost:8100)**
 
 ---
 
@@ -51,7 +51,7 @@ Navigate your browser to:
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 PrefNet-Studio/
@@ -73,7 +73,7 @@ PrefNet-Studio/
 
 ---
 
-## 🧪 Development (Optional)
+## Development
 
 If you want to make changes to the frontend React source code:
 
